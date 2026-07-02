@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>دعوتنامه عروسی</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Vazirmatn',sans-serif;
+    background:
+    radial-gradient(circle at top left,#fff9f0,#f8f1e8),
+    linear-gradient(to bottom,#fffdf9,#f6efe6);
+    color:#4b3a2f;
+    overflow-x:hidden;
+}
+
+#intro{
+    position:fixed;
+    inset:0;
+    background:rgba(255,252,247,.98);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:1s;
+}
+
+#intro.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-box{
+    text-align:center;
+}
+
+.rings{
+    font-size:70px;
+    color:#c8a96b;
+    margin-bottom:20px;
+    animation:float 2.5s ease-in-out infinite;
+}
+
+.enter-btn{
+    background:linear-gradient(135deg,#d4af37,#c59a2f);
+    color:white;
+    border:none;
+    padding:15px 38px;
+    border-radius:50px;
+    cursor:pointer;
+    font-size:1rem;
+    font-family:inherit;
+    box-shadow:0 8px 25px rgba(197,154,47,.35);
+    transition:.3s;
+}
+
+.enter-btn:hover{
+    transform:translateY(-3px);
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+.container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+}
+
+.card{
+    width:100%;
+    max-width:850px;
+    background:#fffdf9;
+    border-radius:24px;
+    padding:70px 40px;
+    position:relative;
+    box-shadow:0 25px 70px rgba(0,0,0,.12);
+    opacity:0;
+    transform:translateY(30px);
+    transition:1.2s;
+}
+
+.card.show{
+    opacity:1;
+    transform:none;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:2px solid #d4af37;
+    border-radius:18px;
+}
+
+.card::after{
+    content:"";
+    position:absolute;
+    inset:25px;
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:12px;
+}
+
+.flower-top,
+.flower-bottom{
+    position:absolute;
+    font-size:48px;
+    color:#d4af37;
+}
+
+.flower-top{
+    top:25px;
+    right:35px;
+}
+
+.flower-bottom{
+    bottom:25px;
+    left:35px;
+}
+
+.bismillah{
+    text-align:center;
+    font-size:1.6rem;
+    color:#b38b2d;
+    font-weight:700;
+    margin-bottom:35px;
+}
+
+.message{
+    text-align:center;
+    line-height:2.5;
+    font-size:1.15rem;
+    max-width:680px;
+    margin:auto;
+}
+
+.hosts{
+    margin-top:35px;
+    text-align:center;
+    line-height:2.2;
+    font-size:1.05rem;
+}
+
+.divider{
+    margin:40px auto;
+    width:180px;
+    height:1px;
+    background:#d4af37;
+    position:relative;
+}
+
+.divider::before{
+    content:"❦";
+    position:absolute;
+    top:-15px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#fffdf9;
+    padding:0 15px;
+    color:#d4af37;
+    font-size:20px;
+}
+
+.title{
+    text-align:center;
+    color:#b38b2d;
+    font-size:1.5rem;
+    font-weight:700;
+}
+
+.names{
+    text-align:center;
+    margin-top:25px;
+}
+
+.groom,
+.bride{
+    font-size:2.2rem;
+    font-weight:700;
+    color:#4b3a2f;
+}
+
+.and{
+    margin:18px 0;
+    color:#b38b2d;
+    font-size:1.3rem;
+}
+
+.details{
+    margin-top:45px;
+    text-align:center;
+    line-height:2.6;
+    font-size:1.15rem;
+}
+
+.label{
+    color:#b38b2d;
+    font-weight:700;
+    font-size:1.1rem;
+}
+
+.footer{
+    margin-top:45px;
+    text-align:center;
+    font-size:1.15rem;
+    color:#6f5c4d;
+}
+
+@media(max-width:768px){
+
+.card{
+    padding:55px 25px;
+}
+
+.groom,
+.bride{
+    font-size:1.7rem;
+}
+
+.message{
+    font-size:1rem;
+}
+
+.bismillah{
+    font-size:1.3rem;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+    <div class="intro-box">
+        <div class="rings">❦</div>
+
+        <button class="enter-btn" onclick="openInvitation()">
+            باز کردن دعوتنامه
+        </button>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="card" id="card">
+
+<div class="flower-top">❀</div>
+<div class="flower-bottom">❀</div>
+
+<div class="bismillah">
+بسم الله الرحمن الرحیم
+</div>
+
+<div class="message">
+با نهایت احترام و ارادت، از شما و خانوادهٔ محترمتان صمیمانه دعوت می‌نماییم تا در محفل عروسی ما حضور یافته و شادی این روز فرخنده را با ما شریک سازید.
+
+حضور گرم و ارزشمند شما موجب افتخار و زینت محفل ما خواهد بود.
+</div>
+
+<div class="hosts">
+از طرف<br>
+اقبال شاه عبیدی<br>
+و<br>
+سارنوال عیمل کتسوال
+</div>
+
+<div class="divider"></div>
+
+<div class="title">
+محفل عروسی
+</div>
+
+<div class="names">
+<div class="groom">آقای مجتبی عبیدی</div>
+
+<div class="and">و</div>
+
+<div class="bride">دوشیزه کتسوال</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="details">
+
+<div>
+<span class="label">تاریخ</span><br>
+۱۵ آگست ۲۰۲۶
+</div>
+
+<br>
+
+<div>
+<span class="label">ساعت</span><br>
+۴:۰۰ بعد از ظهر
+</div>
+
+<br>
+
+<div>
+<span class="label">محل برگزاری</span><br>
+Domaine De Loranger<br>
+Rue du Bois 59182<br>
+Montigny-en-Ostrevent
+</div>
+
+</div>
+
+<div class="footer">
+منتظر حضور گرم و پرمهر شما هستیم
+</div>
+
+</div>
+
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+function openInvitation(){
+
+    document.getElementById("intro").classList.add("hidden");
+    document.getElementById("card").classList.add("show");
+
+    music.play().catch(error=>{
+        console.log(error);
+    });
+}
+</script>
+
+</body>
+</html>
